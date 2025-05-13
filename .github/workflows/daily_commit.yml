@@ -1,0 +1,16 @@
+name: Daily Commit
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Yeh daily 12 AM UTC time pe run karega
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Run Script
+        run: |
+          python auto_commit.py
